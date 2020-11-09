@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Auth;
 use Faker\Generator as Faker;
 use App\Post;
 use App\User;
@@ -17,16 +16,15 @@ class PostsTableSeeder extends Seeder
     {
         for ($i=0; $i<20; $i++) {
 
-            $user = Auth::user();
-            $id = Auth::id();
+            $user = User::inRandomOrder()->first();
 
             $post=new Post;
             
-            $post->user_id=$id;
-            $post->title=$faker->word();
-            $post->author=$faker->$user;
-            $post->description=$faker->text($maxNbChars = 500) ;
-            $post->date=$faker->date();
+            $post->user_id=$user->id;
+            $post->title=$faker->word();        
+            $post->author=$user->name;
+            $post->description=$faker->text($maxNbChars = 400);
+            $post->date=$faker->date;
 
             $post->save();
         }

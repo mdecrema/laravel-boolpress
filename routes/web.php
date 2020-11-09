@@ -21,12 +21,12 @@ Auth::routes();
 
 // Sezione Admin
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function() {
-    Route::get('/', 'HomeController@index')->name('admin.home');
-    Route::resource('articles', 'ArticleController');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('posts', 'PostController');
 });
 
 // Sezione Pubblica
-Route::get('/home', 'HomeController@index')->name('guests.home');
+//Route::get('/home', 'HomeController@index')->name('guests.home');
 
 
 /*Route::prefix('admin')

@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        dd($posts);
+        return view('admin.home', compact('posts'));
     }
 
     /**

@@ -19,9 +19,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
-    Route::get('/', 'HomeController@index')->name('home');
+// Sezione Admin
+Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function() {
+    Route::get('/', 'HomeController@index')->name('admin.home');
     Route::resource('articles', 'ArticleController');
-})
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Sezione Pubblica
+Route::get('/home', 'HomeController@index')->name('guests.home');
+
+
+/*Route::prefix('admin')
+->namespace('Admin')
+->middleware('auth')
+->group(function () {
+Route::get('/', 'HomeController@index')
+
+->name('home');
+});*/

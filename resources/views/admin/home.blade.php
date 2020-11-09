@@ -11,7 +11,13 @@
     <p>
         {{$post->description}}
     </p>
+    <form action="" method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="delete">
+    </form>
 
     @endforeach
 
 @endsection
+

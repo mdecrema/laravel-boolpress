@@ -11,7 +11,7 @@
     <p>
         {{$post->description}}
     </p>
-    <form action="" method="POST">
+    <form action="{{route('posts.destroy', $post->id)}}" method="POST">
         @csrf
         @method('DELETE')
         <input type="submit" value="delete">

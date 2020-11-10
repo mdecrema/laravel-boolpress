@@ -26,14 +26,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
 });
 
 // Sezione Pubblica
-//Route::get('/home', 'HomeController@index')->name('guests.home');
+Route::get('home', 'PostController@index')->name('guests.home');
+//Route::resource('posts', 'PostController');
 
 
-/*Route::prefix('admin')
-->namespace('Admin')
-->middleware('auth')
-->group(function () {
-Route::get('/', 'HomeController@index')
-
-->name('home');
-});*/

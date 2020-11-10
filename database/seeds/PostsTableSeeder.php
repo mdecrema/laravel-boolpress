@@ -14,7 +14,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i<20; $i++) {
+        for ($i=0; $i<16; $i++) {
 
             $user = User::inRandomOrder()->first();
 

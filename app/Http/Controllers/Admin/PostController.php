@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $posts = Post::where('user_id', $id);
+        $posts = Post::where('user_id', $id)->get();
 
         return view('admin.home', compact('posts'));
     }
@@ -51,7 +51,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find('user_id', $id)->first();
+
+        return view('admin.show', compact('post'));
     }
 
     /**

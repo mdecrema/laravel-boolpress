@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
 
 class PostController extends Controller
@@ -72,7 +73,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find('user_id', $id)->first();
+        $post = Post::find($id);
 
         return view('admin.show', compact('post'));
     }
@@ -108,10 +109,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-
-        $post->delete();
-
-        return view('admin.home');
+        
     }
 }

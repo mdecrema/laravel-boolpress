@@ -6,9 +6,11 @@
         @csrf
         @method('POST')
         <input type="text" name="title" id="title" placeholder="titolo">
-        <input type="textArea" name="description" id="description" placeholder="">
+        <textarea name="description" id="description" placeholder=""></textarea>
         <input type="date" name="date">
         <input type="file" accept="image/*"> 
+        
+        <input type="submit" value="save">
     </form>
 
 @endsection

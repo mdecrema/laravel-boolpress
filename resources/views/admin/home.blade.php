@@ -18,11 +18,8 @@
         @method('DELETE')
         <input type="submit" value="delete">
     </form>
-    <form action="{{route('posts.show', $post)}}" method="POST">
-        @csrf
-        @method('DELETE')
-        <input type="submit" value="view">
-    </form>
+    <button><a href="{{route('posts.show', $post->id)}}">view</a></button>
+   
 
     @endforeach
 

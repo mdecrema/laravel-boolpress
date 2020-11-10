@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <a href="{{asset('admin/posts/create')}}">Create a new post</a>
+
     @foreach ($posts as $post)
 
     <h2>{{$post->title}}</h2>

@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -40,7 +40,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $request->validate([
+            'title'=>'required|max:40',
+            'description'=>'required|max:400',
+            'author'=>'required',
+            'date'=>'required|date',
+            'image'=>'image'
+        ]);
+
+        $path = Storage::disk('public')->put('images', $data['image']);
+        $newPost = new Post;
+
+        $newPost->title=$data['title'];
+        $newPost->title=$data['description'];
+        $newPost->title=$data['author'];
+        $newPost->title=$data['date'];
+        $newPost->title=$data['image'];
+
+        $newPost->save();
+
+        return redirect()->route('admin.show', $posts);
     }
 
     /**

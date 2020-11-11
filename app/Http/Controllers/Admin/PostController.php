@@ -46,7 +46,7 @@ class PostController extends Controller
         $request->validate([
             'title'=>'required|max:40',
             'description'=>'required|max:400',
-            'author'=>'required',
+            'author'=>'max:30',
             'date'=>'required|date',
             'image'=>'image'
         ]);
@@ -54,15 +54,16 @@ class PostController extends Controller
         $path = Storage::disk('public')->put('images', $data['image']);
         $newPost = new Post;
 
+        $newPost->user_id=Auth::id();
         $newPost->title=$data['title'];
-        $newPost->title=$data['description'];
-        $newPost->title=$data['author'];
-        $newPost->title=$data['date'];
-        $newPost->title=$data['image'];
+        $newPost->description=$data['description'];
+        $newPost->author=$data['author'];
+        $newPost->date=$data['date'];
+        $newPost->image=$path;
 
         $newPost->save();
 
-        return redirect()->route('admin.show', $posts);
+        return redirect()->route('admin.show', $newPost->id);
     }
 
     /**
@@ -109,6 +110,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        $post = Post::find($id);
         
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }

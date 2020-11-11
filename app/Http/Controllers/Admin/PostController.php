@@ -57,13 +57,12 @@ class PostController extends Controller
         $newPost->user_id=Auth::id();
         $newPost->title=$data['title'];
         $newPost->description=$data['description'];
-        $newPost->author=$data['author'];
         $newPost->date=$data['date'];
         $newPost->image=$path;
 
         $newPost->save();
 
-        return redirect()->route('admin.show', $newPost->id);
+        return redirect()->route('posts.show', $newPost->id);
     }
 
     /**

@@ -64,7 +64,7 @@ class PostController extends Controller
 
         $newPost->save();
 
-        Mail::to('mail@mail.it')->send(new MailNewPost());
+        Mail::to('mail@mail.it')->send(new MailNewPost($newPost));
 
         return redirect()->route('posts.show', $newPost->id);
     }

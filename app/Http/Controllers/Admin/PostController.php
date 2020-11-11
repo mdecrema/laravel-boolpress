@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\MailNewPost;
+use Illuminate\Support\Facades\Mail;
 use App\Post;
 
 class PostController extends Controller
@@ -61,6 +63,8 @@ class PostController extends Controller
         $newPost->image=$path;
 
         $newPost->save();
+
+        Mail::to('mail@mail.it')->send(new MailNewPost());
 
         return redirect()->route('posts.show', $newPost->id);
     }

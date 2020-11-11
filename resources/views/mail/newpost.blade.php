@@ -6,5 +6,5 @@
 <h3>Following your post details</h3>
 <ul>
     <li>title: {{$post->title}}</li>
-    <li>title: {{$post->decription}}</li>
+    <li>title: {{$post->description}}</li>
 </ul>

@@ -12,6 +12,7 @@ class MailNewPost extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $post;
     /**
      * Create a new message instance.
      *
